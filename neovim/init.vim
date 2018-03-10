@@ -1,32 +1,27 @@
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
+call plug#begin('~/AppData/Local/nvim/plugged')
 call plug#begin('~/AppData/Local/nvim/plugged')
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive' " Use git from vim via Git, Gdiff, Gstatus, ...
+Plug 'airblade/vim-gitgutter' "Shows git changes in the number's column
 
 " looking
-Plug 'mhinz/vim-startify'
-" Plug 'ryanoasis/vim-devicons'
-Plug 'Yggdroot/indentLine'
-Plug 'myusuf3/numbers.vim'
+Plug 'mhinz/vim-startify' " Via :Startify shows a welcome screen
+Plug 'Yggdroot/indentLine' " Shows lines to visualize identations
+Plug 'myusuf3/numbers.vim' " Let me alternate over relative and normal numbers
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ianks/gruvbox'
-Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+" Plug 'ryanoasis/vim-devicons'
 
 " completion/templating
-" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'jiangmiao/auto-pairs'
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-endwise'
-Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs' " 
+Plug 'ervandew/supertab' " Use tab for autocompletition
+Plug 'scrooloose/nerdcommenter' " Commenting code
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'evidens/vim-twig'
+Plug 'valloric/youcompleteme'
 
 " command extention
 Plug 'easymotion/vim-easymotion'
@@ -46,7 +41,7 @@ Plug 'chrisbra/NrrwRgn'
 
 " misc
 Plug 'asins/vimcdoc'
-" Plug 'ccvext.vim'
+
 Plug 'CodeFalling/fcitx-vim-osx'
 "Plug 'lilydjwg/fcitx.vim'
 Plug 'junegunn/vim-github-dashboard'
@@ -61,16 +56,14 @@ Plug 'junegunn/vim-journal'
 " navigation
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'wesleyche/SrcExpl'
 Plug 'majutsushi/tagbar'
-" Plug 'taglist.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'eugen0329/vim-esearch'
 Plug 'rking/ag.vim'
-" Plug 'junegunn/fzf' { 'dir': '~/Sites/OKCMS/cms' }
-" Plug 'junegunn/fzf.vim'
-" Plug 'mileszs/ack.vim'
-" Plug 'rhysd/clever-f.vim'
+Plug 'jremmen/vim-ripgrep' " Under testing - I don't like I need to quit using :q
+Plug 'jlanzarotta/bufexplorer'
+" Plug 'wesleyche/SrcExpl' "Use ctags - Crashed after a while
+" Plug 'taglist.vim' "Similar to Tagbar
+" Plug 'rizzatti/dash.vim' "Only works on mac
+" Plug 'eugen0329/vim-esearch' "Esearch let you search over multiple files
 
 call plug#end()
 
@@ -78,6 +71,7 @@ call plug#end()
 set fileencoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos,mac
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -100,6 +94,7 @@ imap ññ <Esc>A;<Esc>
 nmap <a-w> <leader><leader>w
 nmap <a-b> <leader><leader>b
 nmap <F3> :NERDTreeToggle
+nmap <F8> :TagbarToggle<cr>
 
 " Lookings
 set termguicolors
@@ -113,6 +108,9 @@ set background=dark "use the dark version of gruvbox
 " (uncomment to enable it)
 "au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:python3_host_prog = 'C:\Users\fredy.sanchez\AppData\Local\Programs\Python\Python35-32\python.exe'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
 " Easymotion zfa will search for A or a
 let g:EasyMotion_smartcase = 1
@@ -121,7 +119,7 @@ let g:EasyMotion_smartcase = 1
   " go => go to anywhere
     nmap go <Plug>(easymotion-jumptoanywhere)
   " <c-v> => for pasting
-    imap <c-v> <esc>"+pa
+  "  imap <c-v> <esc>"+pa
   " <c-h/j/k/l> => hjkl in normal mode (but there is a bug mapping <c-h>)
     imap <c-h> <left>
     imap <c-j> <down>
@@ -133,9 +131,6 @@ let g:EasyMotion_smartcase = 1
   " <F2> => fold/unfold current code
   " tips: zR => unfold all; zM => fold all
     nnoremap <F2> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-  " \o => open current file by system apps (only available in osx)
-    nmap <leader>o :!open "%"<cr>
-    imap <leader>o <esc><leader>o
   " <esc> => go back to normal mode (in terminal mode)
     tnoremap <Esc> <C-\><C-n> 
   " <F3> => popup the file tree navigation)
@@ -145,10 +140,10 @@ let g:EasyMotion_smartcase = 1
     noremap tj <c-w>j
     noremap th <c-w>h
     noremap tl <c-w>l
-	nmap twj :resize +5<cr>
-	nmap twk :resize -5<cr>
-	nmap twh :vertical resize -5<cr>
-	nmap twl :vertical resize +5<cr>
+    nmap twj :resize +10<cr>
+    nmap twk :resize -10<cr>
+    nmap twh :vertical resize -10<cr>
+    nmap twl :vertical resize +10<cr>
   " t[number] => switch to the file showed in the top tabs
   " t[ t] => prev tab/next tab
     nmap t1 <Plug>AirlineSelectTab1
@@ -193,11 +188,11 @@ let g:EasyMotion_smartcase = 1
   " z + [fFtTwWbBeE(ge)(gE)jknNs] => easy motion
     map zf <Leader><Leader>f
     map zF <Leader><Leader>F
-    map zt <Leader><Leader>t
+    " map zt <Leader><Leader>t
     map zT <Leader><Leader>T
     map zw <Leader><Leader>w
     map zW <Leader><Leader>W
-    map zb <Leader><Leader>b
+    " map zb <Leader><Leader>b
     map zB <Leader><Leader>B
     map ze <Leader><Leader>e
     map zE <Leader><Leader>E
@@ -239,20 +234,36 @@ let g:EasyMotion_smartcase = 1
     imap <c-v> <c-r>*<Esc>
   " 0 goes to the beginning of the line
     nmap 0 ^
+  " Search in project
+    nmap <c-s-7> :Ag! 
+  " Keep visual selection after indenting
+    vnoremap > >gv
+    vnoremap < <gv
+  " Toogle numbers behavior
+    nnoremap <leader>n :NumbersToggle<CR>
+  " Hide search results
+    nnoremap <leader>7 :noh<CR>
+  " <leader>a To show the list of current buffers
+    nnoremap <leader>a :BufExplorer<CR>
 
 " Project location
-let g:startify_bookmarks = [ {'ok': '~/Sites/OKCMS'}, '~/.zshrc' ]
-cd ~/Sites/OKCMS
-
-" vim-plug
-set runtimepath+=$XDG_CONFIG_HOME/nvim/plugged/deoplete.nvim
-set completeopt+=noinsert,noselect
-set completeopt-=preview
+let g:startify_bookmarks = [ {'ok': '~/Sites/OKCMS'}]
+let g:startify_list_order = [
+            \ ['   These are my sessions:'],
+            \ 'sessions',
+            \ ['   My most recently', '   used files'],
+            \ 'files',
+            \ ['   My most recently used files in the current directory:'],
+            \ 'dir',
+            \ ['   These are my bookmarks:'],
+            \ 'bookmarks',
+            \ ['   These are my commands:'],
+            \ 'commands',
+            \ ]
+cd c:\Users\fredy.sanchez\Sites\OKCMS\cms\src
 
 hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
 hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
-
-let g:deoplete#enable_at_startup = 1
 
 filetype plugin indent on
 
@@ -269,12 +280,15 @@ let g:esearch = {
   \}
 
 " New buffers as tabs
-map ,bt :bufdo tab split<CR>
+" map ,bt :bufdo tab split<CR>
 
 " Search defaults
 cd ~/Sites/OKCMS
 noremap <C-P> <Esc>:CtrlP ~/Sites/OKCMS<CR>
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Split vertically on Gdiff
+set diffopt+=vertical
 
 if has("autocmd")
   " Drupal *.module and *.install files.
@@ -290,3 +304,33 @@ if has("autocmd")
 endif
 syntax on
 
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
+set mouse=nicr
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+"nmap <leader>1 <Plug>AirlineSelectTab1
+"nmap <leader>2 <Plug>AirlineSelectTab2
+"nmap <leader>3 <Plug>AirlineSelectTab3
+"nmap <leader>4 <Plug>AirlineSelectTab4
