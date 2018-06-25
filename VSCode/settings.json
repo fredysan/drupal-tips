@@ -4,28 +4,18 @@
     "files.trimTrailingWhitespace": true,
     "files.eol": "\n",
     "workbench.startupEditor": "newUntitledFile",
-    "php.validate.executablePath": "c:\\tools\\php72\\php.exe",
-    "php.validate.run": "onType",
-    "php.validate.enable": true,
-    "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Atom One Dark",
     "vim.leader": ",",
     "vim.easymotion": true,
     "vim.useSystemClipboard": true,
-    "vim.otherModesKeyBindings": [
-        {
-            "before": ["<c-r>", "p"],
-            "after": ["<leader>", "p"]
-        },
-        {
-            "before": ["ñ"],
-            "after": [";"]
-        },
-        {
-            "before": ["0"],
-            "after": ["_"]
-        }
-    ],
+    "vim.sneak": true,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
+    "vim.ignorecase": true,
+    "vim.hlsearch": false,
+    "vim.handleKeys": {
+        "<C-d>": false, // <C-d> to handle multiple cursors.
+    },
     "vim.insertModeKeyBindings": [
         {
             "before": ["j", "j"],
@@ -40,19 +30,19 @@
             "after": ["<Esc>", "A", ";", "<Esc>"]
         },
         {
-            "before": [";", ";"],
-            "after": ["<Esc>", "A", ";", "<Esc>"]
+            "before": ["]", "]"],
+            "after": ["<Esc>", "A", " ", "{", "<Enter>"]
         },
         {
-            "before": ["=", "+" ],
-            "after": ["<Esc>", "A", " ", "=", ">", " "]
+            "before": [";", ";"],
+            "after": ["<Esc>", "A", ";", "<Esc>"]
         },
         {
             "before": [",", "," ],
             "after": ["<Esc>", "A", ",", "<Esc>"]
         }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<C-n>"],
             "after": [],
@@ -78,12 +68,40 @@
             "after": ["leader", "leader", "2", "s"],
         }
     ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p",
+            ],
+            "after": [ "p", "g", "v", "y" ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.indentLines"
+                }
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.outdentLines"
+                }
+            ]
+        },
+    ],
     "css.validate": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.tabSize": 2,
     "editor.autoIndent": true,
     "editor.insertSpaces": true,
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "editor.formatOnSave": false,
     "editor.wordWrapColumn": 80,
     "editor.wordWrap": "off",
@@ -102,8 +120,14 @@
     "window.zoomLevel": -1,
     "editor.snippetSuggestions": "top",
     "editor.lineNumbers": "relative",
-    "php.executablePath": "c:\\tools\\php72\\php.exe",
-    "phpcs.executablePath": "c:\\tools\\vendor\\bin\\phpcs",
-    "phpcs.standard": "C:\\tools\\vendor\\drupal\\coder\\coder_sniffer\\Drupal",
-    "phpfmt.custom_arguments": "--indent_with_space=2 --enable_auto_align"
+    "workbench.iconTheme": "material-icon-theme",
+    "php.validate.executablePath": "c:\\tools\\php72\\php.exe",
+    "php.validate.run": "onType",
+    "php.validate.enable": true,
+    "php.suggest.basic": false,
+    "phpcs.executablePath": "c:\\tools\\vendor\\bin\\phpcs.bat",
+    "phpcs.standard": "c:\\tools\\vendor\\drupal\\coder\\coder_sniffer\\Drupal",
+    "php-docblocker.gap": true,
+    "php-docblocker.useShortNames": true,
+    "workbench.sideBar.location": "right",
 }
