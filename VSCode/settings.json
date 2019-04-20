@@ -1,16 +1,12 @@
 {
     "editor.renderWhitespace": "boundary",
-    "editor.fontSize": 16,
     "files.trimTrailingWhitespace": true,
     "files.eol": "\n",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Atom One Dark",
     "vim.leader": ",",
-    "vim.easymotion": true,
     "vim.useSystemClipboard": true,
     "vim.sneak": true,
     "vim.enableNeovim": true,
-    "vim.neovimPath": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
     "vim.ignorecase": true,
     "vim.hlsearch": false,
     "vim.handleKeys": {
@@ -65,7 +61,11 @@
         },
         {
             "before": [" "],
-            "after": ["leader", "leader", "2", "s"],
+            "after": ["/"],
+        },
+        {
+            "before": ["0"],
+            "after": ["^"],
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -117,17 +117,27 @@
     },
     "html.format.enable": true,
     "html.format.wrapLineLength": 80,
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 1,
     "editor.snippetSuggestions": "top",
-    "editor.lineNumbers": "relative",
     "workbench.iconTheme": "material-icon-theme",
-    "php.validate.executablePath": "c:\\tools\\php72\\php.exe",
+    "php.validate.executablePath": "/usr/bin/php",
     "php.validate.run": "onType",
     "php.validate.enable": true,
     "php.suggest.basic": false,
-    "phpcs.executablePath": "c:\\tools\\vendor\\bin\\phpcs.bat",
-    "phpcs.standard": "c:\\tools\\vendor\\drupal\\coder\\coder_sniffer\\Drupal",
     "php-docblocker.gap": true,
     "php-docblocker.useShortNames": true,
     "workbench.sideBar.location": "right",
+    "vim.neovimPath": "/usr/bin/nvim",
+    "files.watcherExclude": {
+        "**/ddbb_backups/**": true
+    },
+    "gitlens.blame.avatars": false,
+    "gitlens.blame.highlight.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "search.smartCase": true,
+    "phpSniffer.standard": "~/.config/composer/vendor/drupal/coder/coder_sniffer/Drupal",
+    "phpSniffer.run": "onType",
+    "[php]": {
+        "editor.defaultFormatter": "wongjn.php-sniffer"
+    }
 }
